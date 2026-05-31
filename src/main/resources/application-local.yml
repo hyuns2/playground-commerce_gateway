@@ -19,24 +19,32 @@ spring:
     gateway:
       routes:
         - id: catalog-service
-          uri: ${CATALOG_HOST}:${CATALOG_PORT}
+          uri: http://${CATALOG_HOST}:${CATALOG_PORT}
           predicates:
             - Path=/catalog/**
+          filters:
+            - StripPrefix=1
 
         - id: inventory-service
-          uri: ${INVENTORY_HOST}:${INVENTORY_PORT}
+          uri: http://${INVENTORY_HOST}:${INVENTORY_PORT}
           predicates:
             - Path=/inventory/**
+          filters:
+            - StripPrefix=1
 
         - id: order-service
-          uri: ${ORDER_HOST}:${ORDER_PORT}
+          uri: http://${ORDER_HOST}:${ORDER_PORT}
           predicates:
             - Path=/order/**
+          filters:
+            - StripPrefix=1
 
         - id: payment-service
-          uri: ${PAYMENT_HOST}:${PAYMENT_PORT}
+          uri: http://${PAYMENT_HOST}:${PAYMENT_PORT}
           predicates:
             - Path=/payment/**
+          filters:
+            - StripPrefix=1
 
       default-filters:
         - PreserveHostHeader
