@@ -1,6 +1,6 @@
 server:
   address: 0.0.0.0
-  port: ${GATEWAY_SERVER_PORT}
+  port: ${GATEWAY_PORT}
 
 spring:
   application:

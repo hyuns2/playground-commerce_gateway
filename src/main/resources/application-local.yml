@@ -19,13 +19,25 @@ spring:
     gateway:
       routes:
         - id: catalog-service
-          uri: http://catalog-service:8080
+          uri: ${CATALOG_HOST}:${CATALOG_PORT}
+          predicates:
+            - Path=/catalog/**
+
         - id: inventory-service
-          uri: http://inventory-service:8080
+          uri: ${INVENTORY_HOST}:${INVENTORY_PORT}
+          predicates:
+            - Path=/inventory/**
+
         - id: order-service
-          uri: http://order-service:8080
+          uri: ${ORDER_HOST}:${ORDER_PORT}
+          predicates:
+            - Path=/order/**
+
         - id: payment-service
-          uri: http://payment-service:8080
+          uri: ${PAYMENT_HOST}:${PAYMENT_PORT}
+          predicates:
+            - Path=/payment/**
+
       default-filters:
         - PreserveHostHeader
       globalcors:
