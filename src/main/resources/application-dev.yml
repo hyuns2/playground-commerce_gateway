@@ -3,18 +3,6 @@ spring:
     activate:
       on-profile: dev
 
-  management:
-    endpoints:
-      web:
-        exposure:
-          include: health,prometheus,metrics
-    metrics:
-      distribution:
-        percentiles-histogram:
-          http:
-            server:
-              requests: true
-
   cloud:
     gateway:
       routes:
@@ -57,3 +45,22 @@ spring:
               - "*"
             allowedMethods:
               - "*"
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    prometheus:
+      access: unrestricted
+  prometheus:
+    metrics:
+      export:
+        enabled: true
+  metrics:
+    distribution:
+      percentiles-histogram:
+        http:
+          server:
+            requests: true
