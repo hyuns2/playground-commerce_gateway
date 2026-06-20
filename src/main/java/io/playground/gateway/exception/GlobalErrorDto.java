@@ -6,9 +6,9 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public class GlobalErrorDto {
-    private final String code;
-    private final String message;
-    private final String detail;
+    private String code;
+    private String message;
+    private String detail;
 
     public static GlobalErrorDto of(String code,
                                     String message,
